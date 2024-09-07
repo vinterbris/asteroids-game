@@ -2,7 +2,7 @@
 
 > Written as guided project
 
-Launch: 
+Launch: `python3 main.py`
 
 
 
