@@ -19,13 +19,13 @@ class Asteroid(CircleShape):
     def split(self, score):
         self.kill()
         if self.radius == ASTEROID_MIN_RADIUS:
-            score.value += 80
+            score.score_value += 80
             return
 
         if self.radius == ASTEROID_MAX_RADIUS:
-            score.value += 20
+            score.score_value += 20
         else:
-            score.value += 50
+            score.score_value += 50
 
         angle = random.uniform(20, 50)
         vector1 = self.velocity.rotate(angle)
