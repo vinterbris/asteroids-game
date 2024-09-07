@@ -1,14 +1,16 @@
 import pygame
 
 from Modules.circleshape import CircleShape
+from Modules.shot import Shot
 from data.constants import (
     PLAYER_RADIUS,
     PLAYER_TURN_SPEED,
     PLAYER_SPEED,
     PLAYER_SHOOT_SPEED,
     PLAYER_SHOOT_COOLDOWN,
+    SCREEN_WIDTH,
+    SCREEN_HEIGHT,
 )
-from Modules.shot import Shot
 
 
 class Player(CircleShape):
@@ -64,3 +66,8 @@ class Player(CircleShape):
     def shoot(self):
         shot = Shot(self.position.x, self.position.y)
         shot.velocity = pygame.Vector2(0, 1).rotate(self.rotation) * PLAYER_SHOOT_SPEED
+
+    def respawn(self):
+        self.kill()
+        Player.lives -= 1
+        return Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)

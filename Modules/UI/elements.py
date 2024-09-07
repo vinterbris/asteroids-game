@@ -1,3 +1,5 @@
+import sys
+
 import pygame
 
 from Modules.UI.text import Text
@@ -38,3 +40,5 @@ class Elements(Text):
 
         pygame.display.flip()
         pygame.time.wait(DISPLAY_GAME_OVER)
+
+        raise sys.exit('Game over!')

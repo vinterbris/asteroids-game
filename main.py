@@ -1,13 +1,12 @@
-import sys
-
 import pygame
 
+from Modules.UI.elements import Elements
 from Modules.asteroid import Asteroid
 from Modules.asteroidfield import AsteroidField
-from Modules.UI.elements import Elements
-from data.constants import *
+from Modules.particle import Particle
 from Modules.player import Player
 from Modules.shot import Shot
+from data.constants import *
 
 
 def main():
@@ -25,6 +24,7 @@ def main():
     drawable = pygame.sprite.Group()
     asteroids = pygame.sprite.Group()
     shots = pygame.sprite.Group()
+    particles = pygame.sprite.Group()
     ui = pygame.sprite.Group()
 
     Player.containers = (updatable, drawable)
@@ -32,11 +32,13 @@ def main():
     AsteroidField.containers = updatable
     Shot.containers = (shots, updatable, drawable)
     Elements.containers = (ui, drawable)
+    Particle.containers = (particles, drawable, updatable)
 
     # Objects
     asteroid_field = AsteroidField()
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
     ui_elements = Elements()
+    particle = Particle(0, 0)
 
     # Game loop
     while True:
@@ -53,16 +55,19 @@ def main():
         for asteroid in asteroids:
             if asteroid.collide_with(player):
                 if Player.lives > 0:
-                    player.kill()
-                    Player.lives -= 1
-                    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+                    player = player.respawn()
                 else:
                     ui_elements.game_over(screen)
-                    raise sys.exit('Game over!')
             for shot in shots:
                 if asteroid.collide_with(shot):
                     asteroid.split(ui_elements)
                     shot.kill()
+
+        for particle in particles:
+            if particle.lifetime > 0:
+                particle.lifetime -= 1
+            else:
+                particle.kill()
 
         # draw
         for obj in drawable:

@@ -9,7 +9,7 @@ Launch: `python3 main.py`
 * [X]  Add a scoring system
 * [X]  Implement multiple lives and respawning
 * [X]  Add 'Game Over' screen
-* [ ]  Add an explosion effect for the asteroids
+* [X]  Add an explosion effect for the asteroids
 * [ ]  Add acceleration to the player movement
 * [ ]  Make the objects wrap around the screen instead of disappearing
 * [ ]  Add a background image
