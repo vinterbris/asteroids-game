@@ -4,11 +4,9 @@
 
 Launch: `python3 main.py`
 
-
-
 **Possible extentions of project:**
 
-* [x]  Add a scoring system
+* [X]  Add a scoring system
 * [X]  Implement multiple lives and respawning
 * [ ]  Add an explosion effect for the asteroids
 * [ ]  Add acceleration to the player movement
@@ -20,3 +18,5 @@ Launch: `python3 main.py`
 * [ ]  Add a shield power-up
 * [ ]  Add a speed power-up
 * [ ]  Add bombs that can be dropped
+
+![image.png](assets/screenshot_game.png)
