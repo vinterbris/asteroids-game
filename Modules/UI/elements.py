@@ -9,13 +9,15 @@ from data.constants import SCREEN_WIDTH, SCREEN_HEIGHT, DISPLAY_GAME_OVER
 
 class Elements(Text):
 
-    def __init__(self):
+    def __init__(self, player):
         super().__init__()
         self.score_value = 0
+        self.player = player
 
     def draw(self, screen):
         self.score(screen)
         self.lives(screen)
+        self.velocity(screen)
 
     def score(self, screen):
         val = f'Score: {str(self.score_value)}'
@@ -26,6 +28,12 @@ class Elements(Text):
     def lives(self, screen):
         val = f'Lives: {Player.lives + 1}'
         coordinates = (20, 50)
+        text = self.font.render(val, True, 'white')
+        screen.blit(text, coordinates)
+
+    def velocity(self, screen):
+        val = f'Velocity: {self.player.speed}'
+        coordinates = (20, 80)
         text = self.font.render(val, True, 'white')
         screen.blit(text, coordinates)
 

@@ -37,7 +37,7 @@ def main():
     # Objects
     asteroid_field = AsteroidField()
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
-    ui_elements = Elements()
+    ui_elements = Elements(player)
     particle = Particle(0, 0)
 
     # Game loop
