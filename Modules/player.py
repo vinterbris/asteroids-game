@@ -12,6 +12,8 @@ from Modules.shot import Shot
 
 
 class Player(CircleShape):
+    lives = 3
+
     def __init__(self, x, y):
         super().__init__(x, y, PLAYER_RADIUS)
         self.rotation = 0

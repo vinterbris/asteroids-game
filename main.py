@@ -48,7 +48,13 @@ def main():
         # check collisions
         for asteroid in asteroids:
             if asteroid.collide_with(player):
-                raise sys.exit('Game over!')
+                if Player.lives > 0:
+                    player.kill()
+                    Player.lives -= 1
+                    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+
+                else:
+                    raise sys.exit('Game over!')
             for shot in shots:
                 if asteroid.collide_with(shot):
                     asteroid.split()
