@@ -4,6 +4,7 @@ import pygame
 
 from Modules.asteroid import Asteroid
 from Modules.asteroidfield import AsteroidField
+from Modules.UI.elements import Elements
 from data.constants import *
 from Modules.player import Player
 from Modules.shot import Shot
@@ -19,20 +20,25 @@ def main():
     clock = pygame.time.Clock()
     dt = 0
 
+    font = pygame.font.SysFont("Arial", 20)
+
     # Groups
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
     asteroids = pygame.sprite.Group()
     shots = pygame.sprite.Group()
+    ui = pygame.sprite.Group()
 
     Player.containers = (updatable, drawable)
     Asteroid.containers = (asteroids, updatable, drawable)
     AsteroidField.containers = updatable
     Shot.containers = (shots, updatable, drawable)
+    Elements.containers = (ui, drawable)
 
     # Objects
     asteroid_field = AsteroidField()
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+    score = Elements()
 
     # Game loop
     while True:
@@ -52,17 +58,20 @@ def main():
                     player.kill()
                     Player.lives -= 1
                     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
-
                 else:
                     raise sys.exit('Game over!')
             for shot in shots:
                 if asteroid.collide_with(shot):
-                    asteroid.split()
+                    asteroid.split(score)
                     shot.kill()
 
         # draw
         for obj in drawable:
             obj.draw(screen)
+
+        # score_text = font.render(f"Score: {score.value}", True, 'white')
+        # screen.blit(score_text, (20, 20))
+
         pygame.display.flip()
         dt = clock.tick(60) / 1000
 
