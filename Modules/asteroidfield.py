@@ -1,6 +1,6 @@
 import pygame
 import random
-from asteroid import Asteroid
+from Modules.asteroid import Asteroid
 from data.constants import *
 
 

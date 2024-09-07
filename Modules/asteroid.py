@@ -1,6 +1,6 @@
 import pygame.draw
 
-from circleshape import CircleShape
+from Modules.circleshape import CircleShape
 from data.constants import ASTEROID_MIN_RADIUS
 import random
 
