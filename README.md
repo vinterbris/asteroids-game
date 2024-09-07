@@ -8,7 +8,7 @@ Launch: `python3 main.py`
 
 **Possible extentions of project:**
 
-* [ ]  Add a scoring system
+* [x]  Add a scoring system
 * [X]  Implement multiple lives and respawning
 * [ ]  Add an explosion effect for the asteroids
 * [ ]  Add acceleration to the player movement
