@@ -1,7 +1,7 @@
 import pygame
 
 from circleshape import CircleShape
-from constants import (
+from data.constants import (
     PLAYER_RADIUS,
     PLAYER_TURN_SPEED,
     PLAYER_SPEED,

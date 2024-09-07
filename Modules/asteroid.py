@@ -1,7 +1,7 @@
 import pygame.draw
 
 from circleshape import CircleShape
-from constants import ASTEROID_MIN_RADIUS
+from data.constants import ASTEROID_MIN_RADIUS
 import random
 
 
