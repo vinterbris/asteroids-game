@@ -45,7 +45,6 @@ class Player(CircleShape):
 
     def update(self, dt):
         self.timer(dt)
-        print(self.shoot_timer)
 
         keys = pygame.key.get_pressed()
 
