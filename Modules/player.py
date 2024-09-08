@@ -10,6 +10,9 @@ from data.constants import (
     PLAYER_SHOOT_COOLDOWN,
     SCREEN_WIDTH,
     SCREEN_HEIGHT,
+    PLAYER_MAX_SPEED,
+    PLAYER_ACCELERATION,
+    PLAYER_DECELERATION,
 )
 
 
@@ -20,7 +23,10 @@ class Player(CircleShape):
         super().__init__(x, y, PLAYER_RADIUS)
         self.rotation = 0
         self.timer = 0
+        self.max_speed = PLAYER_MAX_SPEED
         self.speed = PLAYER_SPEED
+        self.acceleration = PLAYER_ACCELERATION
+        self.deceleration = PLAYER_DECELERATION
 
     # in the player class
     def triangle(self):
